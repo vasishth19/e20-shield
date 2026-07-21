@@ -1,0 +1,51 @@
+{
+  "_comment": "Generic fallback rule engine (Section 5.1). Used ONLY when no exact make/model/year match exists in vehicle_registry_specs. Editable without redeploying code — this is the single most important piece of general-purpose logic in the project, since it lets ANY vehicle get an immediate 'Estimated' answer from manufacturing year alone.",
+  "year_bands": [
+    {
+      "label": "before_2010",
+      "min_year": 1900,
+      "max_year": 2009,
+      "assumed_standard": "BS3 or earlier",
+      "max_safe_ethanol_pct": 5,
+      "confidence": "Low",
+      "note": "Recommend manual verification with manufacturer/mechanic."
+    },
+    {
+      "label": "2010_to_2016",
+      "min_year": 2010,
+      "max_year": 2016,
+      "assumed_standard": "BS3/BS4 transition",
+      "max_safe_ethanol_pct": 10,
+      "confidence": "Medium"
+    },
+    {
+      "label": "2017_to_2019",
+      "min_year": 2017,
+      "max_year": 2019,
+      "assumed_standard": "BS4",
+      "max_safe_ethanol_pct": 10,
+      "confidence": "Medium-High"
+    },
+    {
+      "label": "2020_to_2022",
+      "min_year": 2020,
+      "max_year": 2022,
+      "assumed_standard": "BS6 Phase 1",
+      "max_safe_ethanol_pct": 10,
+      "confidence": "Medium-High"
+    },
+    {
+      "label": "apr_2023_onward",
+      "min_year": 2023,
+      "max_year": 2100,
+      "assumed_standard": "BS6 Phase 2",
+      "max_safe_ethanol_pct": 20,
+      "confidence": "High"
+    }
+  ],
+  "sources": [
+    "Ministry of Road Transport and Highways (MoRTH) BS-VI notification timeline",
+    "ARAI published emission-standard rollout schedule",
+    "Public manufacturer compliance statements (aggregated pattern, not vehicle-specific)"
+  ]
+}

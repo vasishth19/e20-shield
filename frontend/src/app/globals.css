@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  background-color: #050507;
+  color: #F4F4F5;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(129, 140, 248, 0.35);
+}
+
+/* Glass panel used throughout the app */
+.glass-panel {
+  background: rgba(15, 15, 19, 0.6);
+  border: 1px solid #26262E;
+  border-radius: 16px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: relative;
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(129,140,248,0.35), rgba(34,211,238,0.05), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Animated grid backdrop, used behind hero sections */
+.bg-animated-grid {
+  background-color: #050507;
+  background-image:
+    linear-gradient(rgba(129,140,248,0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129,140,248,0.09) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: drift 25s linear infinite alternate;
+}
+
+/* Shimmering text for headline accents */
+.text-shimmer {
+  background: linear-gradient(90deg, #818CF8 0%, #22D3EE 25%, #818CF8 50%, #34D399 75%, #818CF8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* Numeric ticker style for live dashboard stats */
+.stat-number {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Scrollbar polish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #050507; }
+::-webkit-scrollbar-thumb { background: #26262E; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #34343e; }
+
+/* Live pulse dot for "live" indicators */
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #34D399;
+  box-shadow: 0 0 0 rgba(52,211,153,0.5);
+  animation: pulseglow 2s infinite;
+  position: relative;
+}
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1px solid rgba(52,211,153,0.5);
+  animation: pulseglow 2s infinite;
+}
